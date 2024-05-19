@@ -57,11 +57,13 @@ export type SuggestedPointBinding = [
 export const shouldEnableBindingForPointerEvent = (
   event: React.PointerEvent<HTMLElement>,
 ) => {
-  return !event[KEYS.CTRL_OR_CMD];
+  // return !event[KEYS.CTRL_OR_CMD];
+  return false; // Disable binding always for now
 };
 
 export const isBindingEnabled = (appState: AppState): boolean => {
-  return appState.isBindingEnabled;
+  // return appState.isBindingEnabled;
+  return false; // Disable binding always for now
 };
 
 const getNonDeletedElements = (
@@ -328,6 +330,10 @@ export const maybeBindLinearElement = (
   pointerCoords: { x: number; y: number },
   app: AppClassProperties,
 ): void => {
+  // HOT PATH: Bail out if binding is disabled
+  if (!appState.isBindingEnabled) { 
+    return;
+  }
   if (appState.startBoundElement != null) {
     bindLinearElement(
       linearElement,
