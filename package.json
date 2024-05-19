@@ -1,6 +1,11 @@
 {
   "private": true,
-  "name": "excalidraw-monorepo",
+  "name": "excalidraw-lgm",
+  "version": "0.0.1",
+  "description": "Excalidraw Desktop Application",
+  "author": "sw.baek <overman91@gmail.com>",
+  "main": "main.js",
+  "type": "module",
   "packageManager": "yarn@1.22.22",
   "workspaces": [
     "excalidraw-app",
@@ -35,6 +40,8 @@
     "@vitest/ui": "0.32.2",
     "chai": "4.3.6",
     "dotenv": "16.0.1",
+    "electron": "30.0.6",
+    "electron-builder": "24.13.3",
     "eslint-config-prettier": "8.5.0",
     "eslint-config-react-app": "7.0.1",
     "eslint-plugin-prettier": "3.3.1",
@@ -74,6 +81,8 @@
     "prettier": "prettier \"**/*.{css,scss,json,md,html,yml}\" --ignore-path=.eslintignore",
     "start": "yarn --cwd ./excalidraw-app start",
     "start:app:production": "npm run build && npx http-server build -a localhost -p 5001 -o",
+    "electron": "electron .",
+    "electron:build": "electron-builder --win portable",
     "test:all": "yarn test:typecheck && yarn test:code && yarn test:other && yarn test:app --watch=false",
     "test:app": "vitest",
     "test:code": "eslint --max-warnings=0 --ext .js,.ts,.tsx .",
@@ -88,5 +97,14 @@
     "prerelease:excalidraw": "node scripts/prerelease.js",
     "build:preview": "yarn build && vite preview --port 5000",
     "release:excalidraw": "node scripts/release.js"
+  },
+  "electron:build": {
+    "appId": "com.swbaek.excalidraw",
+    "files": [
+      "build/**/*",
+      "main.js",
+      "preload.cjs",
+      "package.json"
+    ]
   }
 }
