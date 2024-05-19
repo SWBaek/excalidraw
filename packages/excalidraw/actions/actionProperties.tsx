@@ -437,6 +437,12 @@ export const actionChangeStrokeWidth = register({
         group="stroke-width"
         options={[
           {
+            value: STROKE_WIDTH.extraThin,
+            text: t("labels.extraThin"),
+            icon: StrokeWidthBaseIcon,
+            testId: "strokeWidth-extraThin",
+          },
+          {
             value: STROKE_WIDTH.thin,
             text: t("labels.thin"),
             icon: StrokeWidthBaseIcon,
