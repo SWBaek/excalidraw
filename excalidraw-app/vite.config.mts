@@ -10,6 +10,7 @@ import { createHtmlPlugin } from "vite-plugin-html";
 const envVars = loadEnv("", `../`);
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: './',  // 추가된 부분
   server: {
     port: Number(envVars.VITE_APP_PORT || 3000),
     // open the browser
