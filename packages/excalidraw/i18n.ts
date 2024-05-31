@@ -14,7 +14,7 @@ export interface Language {
 
 export type TranslationKeys = NestedKeyOf<typeof fallbackLangData>;
 
-export const defaultLang = { code: "en", label: "English" };
+export const defaultLang = { code: "ko-KR", label: "한국어" };
 
 export const languages: Language[] = [
   defaultLang,
